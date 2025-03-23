@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeisterX - GeisterBahn</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Moon+Dance&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">GeisterX</div>
+        <ul>
+            <li><a href="index.html">Zuhause</a></li>
+            <li><a href="about.html">Über meine Schule</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h1>GeisterBahn</h1>
+        <p class="subtitle">Hallo! Das ist so ein cooles Abenteuer!</p>
+        <button id="easterEggBtn1">Klick mich, ich hab ein Geheimnis!</button>
+    </header>
+    
+    <section class="content">
+        <h2>Heyy, willkommen bei GeisterX!</h2>
+        <p>Hier gibt’s Geister und ganz viel Spaß! Komm, schau mal!</p>
+        <div class="ghost" onclick="showSecret1()">👻</div>
+        <div class="star" onclick="showSecret2()">⭐</div>
+    </section>
+
+    <footer></footer>
+
+    <script>
+        document.getElementById("easterEggBtn1").addEventListener("click", function() {
+            document.body.style.background = "linear-gradient(135deg, #a1c4fd, #c2e9fb)";
+            alert("Wow, jetzt ist alles wie ein Traum!");
+        });
+
+        function showSecret1() {
+            document.querySelector(".content").innerHTML += "<p class='secret'>👻 Huhu! Geister sind hier!</p>";
+        }
+
+        function showSecret2() {
+            document.querySelector(".content").innerHTML += "<p class='secret'>⭐ Du bist mein Sternchen!</p>";
+        }
+    </script>
+</body>
+</html>

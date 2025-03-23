@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über NMSeggenburg - GeisterX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">GeisterX</div>
+        <ul>
+            <li><a href="index.html">Zuhause</a></li>
+            <li><a href="about.html">Über meine Schule</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h1>NMSeggenburg</h1>
+        <p class="subtitle">Meine Schule ist der Hammer!</p>
+    </header>
+    
+    <section class="content">
+        <h2>Über meine Schule</h2>
+        <p>Hallo! Das ist NMSeggenburg, meine Schule! Hier machen wir coole Sachen wie GeisterX. Ich mag’s, weil es Spaß macht und wir viel lernen!</p>
+        <p>Klasse: 7B | Lehrer: Herr Müller | Jahr: 2025</p>
+        <div class="ghost" onclick="showSchoolSecret1()">🏫</div>
+        <div class="heart" onclick="showSchoolSecret2()">❤️</div>
+    </section>
+
+    <footer></footer>
+
+    <script>
+        function showSchoolSecret1() {
+            document.querySelector(".content").innerHTML += "<p class='secret'>🏫 Schule ist wie Magie!</p>";
+        }
+
+        function showSchoolSecret2() {
+            document.body.innerHTML += "<div class='big-heart'>❤️</div>";
+        }
+    </script>
+</body>
+</html>
