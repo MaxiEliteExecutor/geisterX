@@ -223,7 +223,7 @@ p {
 }
 
 /* Interaktive Elemente */
-.ghost, .star, .heart {
+.ghost, .star, .pumpkin {
     font-size: 5em;
     cursor: pointer;
     animation: float 3s ease-in-out infinite;
@@ -233,7 +233,7 @@ p {
     color: #fff;
 }
 
-.ghost:hover, .star:hover, .heart:hover {
+.ghost:hover, .star:hover, .pumpkin:hover {
     transform: scale(1.3);
     text-shadow: 0 0 20px rgba(255, 69, 0, 1);
     filter: brightness(1.5);
@@ -248,7 +248,7 @@ p {
     margin: 20px 0;
 }
 
-.big-heart {
+.big-pumpkin {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -371,7 +371,7 @@ footer {
     .subtitle {
         font-size: 1.5em;
     }
-    .ghost, .star, .heart {
+    .ghost, .star, .pumpkin {
         font-size: 4em;
     }
 }
@@ -408,7 +408,7 @@ footer {
     p {
         font-size: 1.2em;
     }
-    .ghost, .star, .heart {
+    .ghost, .star, .pumpkin {
         font-size: 3em;
         margin: 15px;
     }
@@ -416,7 +416,7 @@ footer {
         padding: 10px 25px;
         font-size: 1em;
     }
-    .big-heart {
+    .big-pumpkin {
         font-size: 10em;
     }
 }
@@ -437,7 +437,7 @@ footer {
     p {
         font-size: 1em;
     }
-    .ghost, .star, .heart {
+    .ghost, .star, .pumpkin {
         font-size: 2.5em;
     }
 }
