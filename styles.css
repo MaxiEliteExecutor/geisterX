@@ -1,86 +1,74 @@
-/* Grundlegende Stile */
+/* CSS Custom Properties for reusability */
+:root {
+    --primary-color: #ff4500;
+    --text-color: #d3d3d3;
+    --dark-bg: rgba(0, 0, 0, 0.95);
+    --shadow-color: rgba(255, 69, 0, 0.8);
+    --transition-fast: 0.3s ease;
+}
+
+/* Base Styles */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #000000, #1a1a1a);
-    color: #d3d3d3;
+    background: #1a1a1a;
+    color: var(--text-color);
     overflow-x: hidden;
-    transition: background 1s ease;
-    position: relative;
+    will-change: transform;
 }
 
-/* Hintergrund-Overlay mit gruseligem Nebel-Effekt */
+/* Background Overlay */
 .background-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: url('https://via.placeholder.com/1500x1500?text=SpookyFog') center/cover no-repeat;
-    opacity: 0.3;
+    opacity: 0.2;
     z-index: -1;
-    animation: fogMove 25s linear infinite;
-}
-
-.background-overlay::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
 }
 
 /* Navigation */
 nav {
-    background: rgba(0, 0, 0, 0.95);
-    padding: 20px 30px;
+    background: var(--dark-bg);
+    padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    width: 100%;
+    position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
-    border-bottom: 3px solid #ff4500;
-    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--primary-color);
 }
 
 .logo {
     font-family: 'Creepster', cursive;
-    font-size: 2.5em;
-    color: #ff4500;
-    text-shadow: 0 0 20px rgba(255, 69, 0, 0.8), 0 0 5px #000;
-    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    font-size: 2rem;
+    color: var(--primary-color);
+    transition: transform var(--transition-fast);
 }
 
 .logo:hover {
-    transform: scale(1.1);
-    text-shadow: 0 0 30px rgba(255, 69, 0, 1), 0 0 10px #000;
+    transform: scale(1.05);
 }
 
 nav ul {
+    display: flex;
+    align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: center;
 }
 
 nav ul li {
-    margin-left: 30px;
+    margin-left: 1.5rem;
 }
 
 nav ul li a {
-    color: #d3d3d3;
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 700;
-    font-size: 1.2em;
+    font-size: 1.1rem;
     position: relative;
-    transition: color 0.3s ease;
 }
 
 nav ul li a::after {
@@ -88,356 +76,142 @@ nav ul li a::after {
     position: absolute;
     width: 0;
     height: 2px;
-    background: #ff4500;
-    bottom: -5px;
+    background: var(--primary-color);
+    bottom: -0.25rem;
     left: 0;
-    transition: width 0.3s ease;
+    transition: width var(--transition-fast);
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
 }
 
 nav ul li a:hover::after {
     width: 100%;
 }
 
-nav ul li a:hover {
-    color: #ff4500;
-}
-
 /* Header */
 header {
     text-align: center;
-    padding: 150px 20px 80px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(26, 26, 26, 0.9));
-    position: relative;
-    border-bottom: 5px solid #ff4500;
-    box-shadow: 0 0 30px rgba(255, 69, 0, 0.3);
-}
-
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255, 69, 0, 0.2), transparent);
-    z-index: -1;
-    animation: flicker 3s infinite;
+    padding: 6rem 1rem 3rem;
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 2px solid var(--primary-color);
 }
 
 h1 {
     font-family: 'Creepster', cursive;
-    font-size: 6em;
-    color: #ff4500;
-    text-shadow: 0 0 30px rgba(255, 69, 0, 0.9), 0 0 15px #000;
+    font-size: 4rem;
+    color: var(--primary-color);
     margin: 0;
-    animation: glow 2s infinite alternate;
+    opacity: 0; /* Start hidden */
+    animation: fadeIn 1.5s ease forwards; /* Smooth appearance */
 }
 
 .subtitle {
-    font-size: 1.8em;
+    font-size: 1.5rem;
     color: #808080;
-    margin: 20px 0;
+    margin: 1rem 0;
     font-weight: 600;
-    text-shadow: 0 0 5px rgba(255, 69, 0, 0.4);
-    animation: fadeIn 1.5s ease-in;
+    opacity: 0;
+    animation: fadeIn 1.5s ease 0.3s forwards; /* Delayed fade-in */
 }
 
+/* Button */
 button#easterEggBtn1 {
-    background: #ff4500;
+    background: var(--primary-color);
     border: none;
-    padding: 15px 35px;
+    padding: 0.75rem 1.5rem;
     color: #fff;
-    font-size: 1.2em;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    border-radius: 50px;
+    font: 700 1rem 'Roboto', sans-serif;
+    border-radius: 2rem;
     cursor: pointer;
-    margin-top: 30px;
-    box-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-button#easterEggBtn1::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s ease;
-}
-
-button#easterEggBtn1:hover::before {
-    left: 100%;
+    margin-top: 1.5rem;
+    transition: transform var(--transition-fast), background var(--transition-fast);
 }
 
 button#easterEggBtn1:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(255, 69, 0, 1);
+    transform: scale(1.05);
     background: #808080;
 }
 
-/* Content Section */
+/* Content */
 .content {
-    max-width: 1000px;
-    margin: 80px auto;
-    padding: 50px;
+    max-width: 50rem;
+    margin: 3rem auto;
+    padding: 2rem;
     background: rgba(0, 0, 0, 0.9);
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(255, 69, 0, 0.4);
+    border-radius: 1rem;
     text-align: center;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid #ff4500;
-    backdrop-filter: blur(5px);
+    border: 1px solid var(--primary-color);
 }
 
-.content::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 69, 0, 0.3), transparent);
-    z-index: -1;
-    animation: rotate 15s linear infinite;
-}
-
-h2 {
-    font-family: 'Creepster', cursive;
-    color: #ff4500;
-    font-size: 3.5em;
-    text-shadow: 0 0 20px rgba(255, 69, 0, 0.7);
-    margin-bottom: 20px;
-}
-
-p {
-    font-size: 1.5em;
-    line-height: 1.8;
-    color: #d3d3d3;
-    margin: 0 0 30px;
-}
-
-/* Interaktive Elemente */
+/* Interactive Elements */
 .ghost, .star, .pumpkin {
-    font-size: 5em;
+    font-size: 3rem;
+    color: var(--text-color);
     cursor: pointer;
-    animation: float 3s ease-in-out infinite;
-    margin: 20px;
     display: inline-block;
-    transition: transform 0.3s ease, text-shadow 0.3s ease, filter 0.3s ease;
-    color: #fff;
+    margin: 1rem;
+    transition: transform var(--transition-fast);
+    animation: float 3s ease-in-out infinite;
 }
 
 .ghost:hover, .star:hover, .pumpkin:hover {
-    transform: scale(1.3);
-    text-shadow: 0 0 20px rgba(255, 69, 0, 1);
-    filter: brightness(1.5);
+    transform: scale(1.1);
+    color: var(--primary-color);
 }
 
-.secret {
-    color: #ff4500;
-    font-size: 1.5em;
-    font-weight: 700;
-    animation: fadeIn 1s ease-in;
-    text-shadow: 0 0 15px rgba(255, 69, 0, 0.7);
-    margin: 20px 0;
-}
-
+/* Big Pumpkin */
 .big-pumpkin {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 15em;
-    color: #ff4500;
-    animation: pulse 1.5s infinite;
+    font-size: 10rem;
+    color: var(--primary-color);
     z-index: 1000;
-    filter: drop-shadow(0 0 20px rgba(255, 69, 0, 0.8));
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards, floatBig 4s ease-in-out infinite; /* Fade in + movement */
 }
 
-/* Footer */
-footer {
-    background: rgba(0, 0, 0, 0.95);
-    padding: 15px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 20px;
-    border-top: 3px solid #ff4500;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-}
-
-/* Animationen */
+/* Animations */
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-0.75rem); }
+}
+
+@keyframes floatBig {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-1.5rem); } /* Slightly larger movement */
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; }
+    to { opacity: 0.8; } /* Matches static opacity */
 }
 
-@keyframes glow {
-    from {
-        text-shadow: 0 0 15px rgba(255, 69, 0, 0.5), 0 0 5px #000;
-    }
-    to {
-        text-shadow: 0 0 30px rgba(255, 69, 0, 0.9), 0 0 15px #000;
-    }
+/* Media Queries */
+@media (max-width: 75rem) {
+    .content { max-width: 40rem; padding: 1.5rem; }
+    h1 { font-size: 3.5rem; }
 }
 
-@keyframes pulse {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.8;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 1;
-    }
+@media (max-width: 56.25rem) {
+    .content { max-width: 30rem; padding: 1.25rem; }
+    h1 { font-size: 3rem; }
+    .subtitle { font-size: 1.2rem; }
+    .big-pumpkin { font-size: 8rem; }
+    .ghost, .star, .pumpkin { font-size: 2.5rem; }
 }
 
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes fogMove {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 1500px 1500px;
-    }
-}
-
-@keyframes flicker {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.7;
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .content {
-        max-width: 800px;
-        margin: 60px auto;
-        padding: 40px;
-    }
-    h1 {
-        font-size: 5em;
-    }
-    h2 {
-        font-size: 3em;
-    }
-}
-
-@media (max-width: 900px) {
-    .content {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 30px;
-    }
-    h1 {
-        font-size: 4em;
-    }
-    h2 {
-        font-size: 2.5em;
-    }
-    .subtitle {
-        font-size: 1.5em;
-    }
-    .ghost, .star, .pumpkin {
-        font-size: 4em;
-    }
-}
-
-@media (max-width: 600px) {
-    nav {
-        padding: 15px 20px;
-    }
-    .logo {
-        font-size: 2em;
-    }
-    nav ul li {
-        margin-left: 15px;
-    }
-    nav ul li a {
-        font-size: 1em;
-    }
-    header {
-        padding: 100px 15px 50px;
-    }
-    h1 {
-        font-size: 3em;
-    }
-    h2 {
-        font-size: 2em;
-    }
-    .subtitle {
-        font-size: 1.2em;
-    }
-    .content {
-        margin: 30px 15px;
-        padding: 20px;
-    }
-    p {
-        font-size: 1.2em;
-    }
-    .ghost, .star, .pumpkin {
-        font-size: 3em;
-        margin: 15px;
-    }
-    button#easterEggBtn1 {
-        padding: 10px 25px;
-        font-size: 1em;
-    }
-    .big-pumpkin {
-        font-size: 10em;
-    }
-}
-
-@media (max-width: 400px) {
-    h1 {
-        font-size: 2.5em;
-    }
-    h2 {
-        font-size: 1.8em;
-    }
-    .subtitle {
-        font-size: 1em;
-    }
-    .content {
-        padding: 15px;
-    }
-    p {
-        font-size: 1em;
-    }
-    .ghost, .star, .pumpkin {
-        font-size: 2.5em;
-    }
+@media (max-width: 37.5rem) {
+    nav { padding: 0.75rem 1rem; }
+    .logo { font-size: 1.5rem; }
+    nav ul li { margin-left: 1rem; }
+    nav ul li a { font-size: 0.9rem; }
+    header { padding: 4rem 0.75rem 2rem; }
+    h1 { font-size: 2.5rem; }
+    .content { margin: 1.5rem 0.75rem; padding: 1rem; }
+    .big-pumpkin { font-size: 6rem; }
+    .ghost, .star, .pumpkin { font-size: 2rem; }
 }
