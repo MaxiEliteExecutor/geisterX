@@ -7,6 +7,28 @@
     --transition-fast: 0.3s ease;
 }
 
+/* Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform var(--transition-fast);
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+
 /* Base Styles */
 body {
     font-family: 'Roboto', sans-serif;
